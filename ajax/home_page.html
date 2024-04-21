@@ -1,0 +1,24 @@
+<html>
+    <body>
+     <button id = "button">click</button>
+     <div id="result"></div>
+
+     <script>
+        let resultdiv = document.getElementById("result");
+        let button = document.getElementById('button');
+        button.addEventListener('click',Onclick);
+        function Onclick(){
+            console.log("clicked");
+
+            fetch('http://localhost:8080/hello')
+            .then(function(response) {
+                return response.text();
+            })
+            .then(function(result) {
+                resultdiv.innerHTML = result
+                console.log(result);
+            });
+        }
+        </script>
+    </body>
+</html>
