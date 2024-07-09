@@ -11,9 +11,11 @@ app.get("/", function(req, res){
 app.post('/submit', (req, res) => {
     let numbers1 = req.body.n1;
     let numbers2 = req.body.n2;
+    let numbers3 = req.body.n3;
     numbers1 = parseInt(numbers1)
     numbers2 = parseInt(numbers2)
-    let sum = numbers1 + numbers2
+    numbers2 = parseInt(numbers3)
+    let sum = numbers1 + numbers2 + numbers3
     sum = sum.toString();
     res.send(sum);
   });
