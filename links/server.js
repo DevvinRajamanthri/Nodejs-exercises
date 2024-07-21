@@ -14,8 +14,7 @@ app.get('/about', (req, res) => {
         res.end();
     });
   });
-app.get 
-('/', (req, res) => {
+app.get('/', (req, res) => {
     fs.readFile("home.html", function(err, data){
     res.write(data);
     res.end();
