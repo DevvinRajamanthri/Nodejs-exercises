@@ -1,6 +1,6 @@
 var http = require('http');
 var url = require('url');
-
+  
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
     //If you have a url that has the values http://localhost:8080/add?n1=8&n2=3 then request.url will take these values and then turn them into an object in the second parameter.
