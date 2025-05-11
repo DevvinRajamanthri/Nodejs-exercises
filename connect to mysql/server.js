@@ -24,14 +24,25 @@ connection.connect(err => {
 // Define a route to access a table (e.g., fetch all rows from "users" table)
 app.get('/', (req, res) => {
   connection.query('SELECT * FROM user', (err, results) => {
+    let html = "";
+    for (let i = 0; i < results.length; i++) {     
+      html =  html + "<div>" + "<span>" + results[i].username + "</span>" + "<span>" + results[i].id + "</span>" + "</div>"
+    };
+  
+   
     if (err) {
       console.error('Error executing query:', err.stack);
       res.status(500).send('Error fetching data');
+      
       return;
     }
-    res.json(results);
+    res.writeHead(200, {'Content-Type': 'text/html'})
+  res.write(html);
+    res.end();
   });
 });
+
+
 
 // Start the Express server
 app.listen(PORT, () => {
