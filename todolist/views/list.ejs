@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List Items</title>
+</head>
+<body>
+  <h1>Item List</h1>
+
+  <% results.forEach(row => { %>
+    <div>
+      <strong><%= row.name %></strong><br>
+      <%= row.description %><br>
+      ___________________<br><br>
+    </div>
+  <% }) %>
+
+  <form action="/createForm" method="get">
+    <button type="submit">Add New Item</button>
+  </form>
+</body>
+</html>
