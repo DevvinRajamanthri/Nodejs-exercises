@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>List Items</title>
+  <title>Item List</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <h1>Item List</h1>
 
-  <% results.forEach(row => { %>
-    <div>
-      <strong><%= row.name %></strong><br>
-      <%= row.description %><br>
-      ___________________<br><br>
+  <!-- Grid container -->
+  <div class="aboutmegrid">
+
+    <!-- Header row for column labels -->
+    <div class="item-pair header-row">
+      <div class="nav_bar_item header-item">Name</div>
+      <div class="nav_bar_item header-item">Description</div>
     </div>
-  <% }) %>
+
+    <!-- Data rows -->
+    <% results.forEach(row => { %>
+      <div class="item-pair">
+        <div class="nav_bar_item">
+          <%= row.name %>
+        </div>
+        <div class="nav_bar_item">
+          <%= row.description %>
+        </div>
+      </div>
+    <% }) %>
+  </div>
 
   <form action="/createForm" method="get">
     <button type="submit">Add New Item</button>

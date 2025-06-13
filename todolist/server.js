@@ -17,6 +17,7 @@ connection.connect(err => {
   }
   console.log("Connected to MySQL");
 });
+app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));

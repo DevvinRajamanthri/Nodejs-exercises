@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Create Item</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
-  <form action="/submit" method="post">
-    <div>name</div>
-    <input name="name" type="text" required>
-    <div>description</div>
-    <textarea name="description" required></textarea>
-    <br>
-    <input type="submit" value="Submit">
+  <h1>Add a New Item</h1>
+  <form action="/submit" method="post" class="form-row">
+    <div class="form-field">
+      <label for="name">Name</label>
+      <input name="name" type="text" required>
+    </div>
+
+    <div class="form-field">
+      <label for="description">Description</label>
+      <textarea name="description" required></textarea>
+    </div>
+
+    <div class="form-submit">
+      <input type="submit" value="Submit">
+    </div>
   </form>
 </body>
+
 </html>
