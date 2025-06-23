@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Chat App</title>
+  <style>
+    .rectangle {
+      height: 50px;
+      width: 100%;
+      background-color: #555;
+      color: white;
+      line-height: 50px;
+      padding-left: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: bold;
+    }
+
+    body {
+      background-color: blue;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    form.chat-form {
+      padding: 10px;
+      background: #f0f0f0;
+      box-sizing: border-box;
+      display: flex;
+      gap: 10px;
+    }
+
+    form.chat-form input[type="text"] {
+      flex-grow: 1;
+      font-size: 16px;
+      padding: 5px;
+    }
+
+    form.chat-form input[type="submit"] {
+      font-size: 16px;
+      padding: 5px 10px;
+    }
+
+    h1 {
+      margin: 20px;
+      color: white;
+    }
+
+    .chat-messages {
+      margin: 20px;
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 800px;
+      flex-grow: 1;
+      overflow-y: auto;
+    }
+
+    .chat-message {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="rectangle">
+    SIMPLE CHAT APP SIMPLE CHAT APP SIMPLE CHAT APP SIMPLE CHAT APP SIMPLE CHAT APP SIMPLE CHAT APP
+  </div>
+
+  <div>
+    <h1>Chat Messages</h1>
+    <div class="chat-messages">
+      <% results.forEach(row => { %>
+        <div class="chat-message"><%= row.chattext %></div>
+      <% }) %>
+    </div>
+  </div>
+
+  <form class="chat-form" action="/messageSent" method="post">
+    <input name="chatbox" type="text" placeholder="Type your message here..." required>
+    <input type="submit" value="Send">
+  </form>
+</body>
+</html>
