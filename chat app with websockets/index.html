@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebSocket Client</title>
+</head>
+<body>
+  <h1>WebSocket Chat</h1>
+
+  <input type="text" id="username" placeholder="Your name">
+  <button id="registerBtn">Register</button>
+  <br><br>
+
+  <input type="text" id="recipient" placeholder="Recipient">
+  <input type="text" id="message" placeholder="Message">
+  <button id="sendBtn">Send Message</button>
+
+  <h2>Messages:</h2>
+  <pre id="log"></pre>
+
+  <script>
+    const socket = new WebSocket('ws://localhost:8080');
+    const log = document.getElementById('log');
+
+    socket.onopen = () => {
+      log.textContent += 'Connected to server\n';
+    };
+
+    socket.onmessage = event => {
+      try {
+        const data = JSON.parse(event.data);
+        log.textContent += `[${data.type}] From: ${data.from || 'server'} → ${data.to || '-'}: ${data.message || data.error || ''}\n`;
+      } catch {
+        log.textContent += 'Invalid message from server\n';
+      }
+    };
+
+    socket.onclose = () => {
+      log.textContent += 'Disconnected from server\n';
+    };
+
+    document.getElementById('registerBtn').addEventListener('click', () => {
+      const username = document.getElementById('username').value.trim();
+      if (!username) return alert("Enter your name first");
+      socket.send(JSON.stringify({ type: 'register', username }));
+      log.textContent += `Registered as: ${username}\n`;
+    });
+
+    document.getElementById('sendBtn').addEventListener('click', () => {
+      const username = document.getElementById('username').value.trim();
+      const recipient = document.getElementById('recipient').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!username || !recipient || !message) {
+        alert('All fields are required');
+        return;
+      }
+
+      const payload = {
+        type: "message",
+        username,
+        recipient,
+        message
+      };
+
+      socket.send(JSON.stringify(payload));
+    });
+  </script>
+</body>
+</html>

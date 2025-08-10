@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EJS Tutorial</title>
+</head>
+<body>
+  <h1>Welcome, <%= name %>!</h1>
+  <h1>Dad: <%= dad %></h1>
+  <h2>Your tasks:</h2>
+  <ul>
+    <% tasks.forEach(task => { %>
+      <li><%= task %></li>
+    <% }) %>
+
+    
+  </ul>
+</body>
+</html>
